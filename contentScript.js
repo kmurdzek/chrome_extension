@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
-var openaiKey = "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";
+var openaiKey = "PLACEHOLDER";
 const configuration = new Configuration({
-  organization: "org-aL94G1SXJg8X7tiIcPjmmdJ1",
+  organization: "PLACEHOLDERß",
   apiKey: openaiKey
 });
 const openai = new OpenAIApi(configuration);
@@ -14,3 +14,4 @@ console.log("Title:", title);
 console.log("Body:", body);
 var selectedText = window.getSelection().toString();
 console.log("Selected text:", selectedText);
+ß
