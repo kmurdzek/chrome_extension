@@ -2,7 +2,10 @@
   "manifest_version": 3,
   "name": "Webpage Content Scraper",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "permissions": ["activeTab", "scripting", "sidePanel"],
   "background": {
     "service_worker": "background.js"
   },
