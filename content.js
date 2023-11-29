@@ -22,14 +22,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             body: JSON.stringify(data) // Convert the data object to JSON
         })
             .then(response => {
-                response = response.json()
+                console.log('Success THIS IS RESPONSE:', response);
+
                 return response;
             })
-            .then(data => {
-                console.log('Success:', data);
+            .then(response => {
+                console.log('Success THIS IS WORKING:', response.body.message);
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error('Error THIS IS NOT WORKING:', error);
             });
     }
 });
