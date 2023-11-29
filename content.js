@@ -37,6 +37,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             .then(parsedGetResponse => {
                 console.log('Success - Parsed GET Response:', parsedGetResponse);
                 console.log(parsedGetResponse.openai_response);
+               /* alert(parsedGetResponse.openai_response);*/
+                //How to insert "parsedGetResponse.openai_response" into html
+                const resultElement = document.getElementById('receiver-paragraph');
+                if (resultElement) {
+                    resultElement.innerHTML = parsedGetResponse.openai_response;
+                }
             })
             .catch((error) => {
                 console.error('Error THIS IS NOT WORKING:', error);

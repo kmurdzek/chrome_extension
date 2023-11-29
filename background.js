@@ -25,6 +25,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
     if (info.menuItemId === "logHighlight") {
+        chrome.sidePanel.open({windowId: tab.windowId}),
         chrome.tabs.sendMessage(tab.id, { action: "logHighlight" });
     }
 });
