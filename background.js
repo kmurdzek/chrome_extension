@@ -13,3 +13,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     );
   }
 });
+
+
+chrome.runtime.onInstalled.addListener(function() {
+    chrome.contextMenus.create({
+        id: "logHighlight",
+        title: "Log Highlighted Text",
+        contexts: ["selection"]
+    });
+});
+
+chrome.contextMenus.onClicked.addListener(function(info, tab) {
+    if (info.menuItemId === "logHighlight") {
+        chrome.tabs.sendMessage(tab.id, { action: "logHighlight" });
+    }
+});

@@ -2,11 +2,17 @@
   "manifest_version": 3,
   "name": "Webpage Content Scraper",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["contextMenus", "scripting", "activeTab"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
 }
