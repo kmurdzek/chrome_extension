@@ -1,0 +1,65 @@
+<html>
+<head>
+    <style>
+        .chat {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .message-sender {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .message img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .message p {
+            margin: 0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .sender {
+            justify-content: flex-end;
+        }
+
+        .sender p {
+            background-color: lightblue;
+            color: black;
+        }
+
+        .receiver {
+            justify-content: flex-start;
+        }
+
+        .receiver p {
+            background-color: lightgray;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="chat">
+    <div class="message-sender" id="message-sender">
+        <p>Highlighted text:</p>
+    </div>
+    <div class="message receiver">
+        <p id="receiver-paragraph">Short summary</p>
+    </div>  </div>
+<script>
+    window.onload = function() {
+        function setReceiverText(newText) {
+            document.getElementById('receiver-paragraph').innerText = newText;
+            setReceiverText("This is the new text for the receiver paragraph.");
+        };
+    };
+</script></body>
+
+</html>
