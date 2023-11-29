@@ -1,18 +1,21 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    const sessionCookie = "TEST123";
     if (request.action === "logHighlight") {
         var selectedText = window.getSelection().toString();
         // Define the URL of the AWS endpoint
-        const url = 'https://oxhzue4e1b.execute-api.us-east-1.amazonaws.com/make_openai_request';
+        const post_url = 'https://oxhzue4e1b.execute-api.us-east-1.amazonaws.com/make_openai_request';
+        const get_url = 'https://oxhzue4e1b.execute-api.us-east-1.amazonaws.com/access_dynamo_db';
 
 // Create an object with the data you want to send
         const data = {
             "page_context": document.body.innerText,
-            "selected_text": selectedText
+            "selected_text": selectedText,
+            "user_generated_id": sessionCookie
         };
         console.log('This is the data formatted:', data);
 
 // Make the POST request
-        fetch(url, {
+        fetch(post_url, {
             method: 'POST', // Specify the method
             mode: 'no-cors',
             headers: {
@@ -22,12 +25,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             body: JSON.stringify(data) // Convert the data object to JSON
         })
             .then(response => {
-                console.log('Success THIS IS RESPONSE:', response);
-
-                return response;
+                // Make a GET request to the second endpoint using the user_generated_id
+                return fetch(get_url, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
             })
-            .then(response => {
-                console.log('Success THIS IS WORKING:', response.body.message);
+            .then(response2 => response2.json())
+            .then(parsedGetResponse => {
+                console.log('Success - Parsed GET Response:', parsedGetResponse);
+                console.log(parsedGetResponse.openai_response);
             })
             .catch((error) => {
                 console.error('Error THIS IS NOT WORKING:', error);
