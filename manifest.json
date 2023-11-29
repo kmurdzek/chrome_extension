@@ -5,7 +5,7 @@
   "side_panel": {
     "default_path": "sidepanel.html"
   },
-  "permissions": ["sidePanel", "activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "sidePanel"],
   "background": {
     "service_worker": "background.js"
   },

@@ -1,9 +1,58 @@
 <html>
-    <head>
-        <title> GPT Explainer</title>
-    </head>
-    <body>
-        <h1> TEST Explanation</h1>
-        <script src="sidepanel.js"></script>
-    </body>
+<head>
+<style>
+.chat {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.message img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.message p {
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sender {
+  justify-content: flex-end;
+}
+
+.sender p {
+  background-color: lightblue;
+  color: black;
+}
+
+.receiver {
+  justify-content: flex-start;
+}
+
+.receiver p {
+  background-color: lightgray;
+  color: black;
+}
+</style>
+</head>
+<body>
+<div class="chat">
+  <div class="message sender">
+    <p>Text from the webpage</p>
+  </div>
+  <div class="message receiver">
+    <p>Short summary</p>
+  </div>
+</div>
+</body>
 </html>
